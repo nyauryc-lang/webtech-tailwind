@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AURA Clothing | Catálogo</title>
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .header-container {
+            max-width: 1280px;
+            height: 80px;
+            margin: auto;
+            padding: 0 24px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        /* LOGO */
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+
+            border-radius: 12px;
+
+            background: #4f46e5;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+            font-weight: 800;
+
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+        }
+
+        .logo-text {
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: #0f172a;
+        }
+
+        .logo-text span {
+            color: #4f46e5;
+        }
+
+
+        /* NAVEGACIÓN */
+
+        .nav {
+            display: flex;
+            gap: 32px;
+
+            font-size: 14px;
+            font-weight: 500;
+
+            color: #475569;
+        }
+
+        .nav a {
+            transition: color 0.2s ease;
+        }
+
+        .nav a:hover {
+            color: #4f46e5;
+        }
+
+        .nav .active {
+            color: #4f46e5;
+            font-weight: 700;
+        }
+
+
+        /* =========================
+           CARRITO
+        ========================= */
+
+        .cart-link {
+            position: relative;
+
+            padding: 8px;
+
+            color: #334155;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition: color 0.2s ease;
+        }
+
+        .cart-link:hover {
+            color: #4f46e5;
+        }
+
+        .cart-link svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .cart-count {
+            position: absolute;
+
+            top: 0;
+            right: 0;
+
+            width: 20px;
+            height: 20px;
+
+            border-radius: 50%;
+
+            background: #4f46e5;
+            color: white;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        main {
+            flex: 1;
+        }
+
+        .main-container {
+            max-width: 1280px;
+            margin: auto;
+
+            padding: 40px 24px;
+        }
+
+        .page-title {
+            margin-bottom: 32px;
+        }
+
+        .page-title h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .page-title p {
+            margin-top: 6px;
+            color: #64748b;
+        }
+
+
+        /* =========================
+           LAYOUT
+        ========================= */
+
+        .catalog-layout {
+            display: grid;
+
+            grid-template-columns: 260px 1fr;
+
+            gap: 32px;
+        }
+
+
+        /* =========================
+           FILTROS
+        ========================= */
+
+        .filters {
+            background: white;
+
+            padding: 24px;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 16px;
+
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+
+            height: fit-content;
+        }
+
+        .filter-group {
+            margin-bottom: 24px;
+        }
+
+        .filter-title {
+            margin-bottom: 12px;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            color: #0f172a;
+        }
+
+        .category-list {
+            display: flex;
+            flex-direction: column;
+
+            gap: 10px;
+
+            font-size: 14px;
+
+            color: #475569;
+        }
+
+        .category-list label {
+            display: flex;
+            align-items: center;
+
+            gap: 8px;
+
+            cursor: pointer;
+        }
+
+        .category-list input {
+            accent-color: #4f46e5;
+        }
+
+
+        /* TALLAS */
+
+        .sizes {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 8px;
+        }
+
+        .size-button {
+            padding: 7px 13px;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 8px;
+
+            background: white;
+
+            color: #334155;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: all 0.2s ease;
+        }
+
+        .size-button:hover {
+            border-color: #94a3b8;
+        }
+
+        .size-button.selected {
+            border-color: #4f46e5;
+
+            background: #eef2ff;
+
+            color: #4338ca;
+        }
+
+
+        /* BOTÓN LIMPIAR */
+
+        .clear-button {
+            width: 100%;
+
+            padding: 11px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            background: #0f172a;
+
+            color: white;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: background 0.2s ease;
+        }
+
+        .clear-button:hover {
+            background: #1e293b;
+        }
+
+
+        /* =========================
+           PRODUCTOS
+        ========================= */
+
+        .products-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 24px;
+        }
+
+
+        /* =========================
+           TARJETA
+        ========================= */
+
+        .product-card {
+            background: white;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            display: flex;
+            flex-direction: column;
+
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 15px 30px rgba(15, 23, 42, 0.12);
+        }
+
+
+        /* =========================
+           IMAGEN
+        ========================= */
+
+        .product-image {
+            position: relative;
+
+            height: 256px;
+
+            overflow: hidden;
+
+            background: #f1f5f9;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+
+        /* =========================
+           BADGES
+        ========================= */
+
+        .badge {
+            position: absolute;
+
+            top: 12px;
+            left: 12px;
+
+            z-index: 2;
+
+            padding: 5px 10px;
+
+            border-radius: 999px;
+
+            color: white;
+
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .badge-new {
+            background: #4f46e5;
+        }
+
+        .badge-discount {
+            background: #f43f5e;
+        }
+
+
+        /* =========================
+           INFORMACIÓN
+        ========================= */
+
+        .product-info {
+            padding: 20px;
+
+            flex: 1;
+
+            display: flex;
+            flex-direction: column;
+
+            justify-content: space-between;
+        }
+
+        .product-category {
+            font-size: 12px;
+
+            color: #94a3b8;
+        }
+
+        .product-name {
+            margin-top: 5px;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            color: #0f172a;
+        }
+
+        .product-name a:hover {
+            color: #4f46e5;
+        }
+
+        .product-price {
+            margin-top: 8px;
+
+            font-size: 20px;
+
+            font-weight: 800;
+
+            color: #4f46e5;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: center;
+
+            gap: 8px;
+        }
+
+        .old-price {
+            color: #94a3b8;
+
+            font-size: 12px;
+
+            text-decoration: line-through;
+        }
+
+
+        /* =========================
+           BOTÓN PRODUCTO
+        ========================= */
+
+        .product-button {
+            width: 100%;
+
+            margin-top: 16px;
+
+            padding: 10px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            background: #4f46e5;
+
+            color: white;
+
+            text-align: center;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: background 0.2s ease;
+        }
+
+        .product-button:hover {
+            background: #4338ca;
+        }
+
+
+        /* =========================
+           SIN PRODUCTOS
+        ========================= */
+
+        .no-products {
+            display: none;
+
+            grid-column: 1 / -1;
+
+            background: white;
+
+            padding: 50px;
+
+            border-radius: 16px;
+
+            border: 1px solid #e2e8f0;
+
+            text-align: center;
+
+            color: #64748b;
+        }
+
+        .no-products h2 {
+            margin-bottom: 8px;
+
+            color: #0f172a;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            margin-top: auto;
+
+            padding: 48px 24px;
+
+            background: #0f172a;
+
+            color: #94a3b8;
+
+            border-top: 1px solid #1e293b;
+
+            text-align: center;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 1024px) {
+
+            .catalog-layout {
+                grid-template-columns: 220px 1fr;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        /* =========================
+           MÓVIL
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            .header-container {
+                padding: 0 16px;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .main-container {
+                padding: 32px 16px;
+            }
+
+            .catalog-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .filters {
+                width: 100%;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        @media (max-width: 480px) {
+
+            .logo-text {
+                font-size: 22px;
+            }
+
+            .page-title h1 {
+                font-size: 26px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 300px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <div class="header-container">
+
+
+            <!-- LOGO -->
+
+            <a href="#" class="logo">
+
+                <span class="logo-icon">
+                    A
+                </span>
+
+                <span class="logo-text">
+                    AURA<span>.</span>
+                </span>
+
+            </a>
+
+
+            <!-- NAVEGACIÓN -->
+
+            <nav class="nav">
+
+                <a href="#" >
+                    Inicio
+                </a>
+
+                <a href="#" class="active">
+                    Catálogo
+                </a>
+
+                <a href="#">
+                    Destacado
+                </a>
+
+                <a href="#">
+                    Mi Carrito
+                </a>
+
+            </nav>
+
+
+            <!-- CARRITO -->
+
+            <div>
+
+                <a href="#" class="cart-link">
+
+                    <svg
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24">
+
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z">
+                        </path>
+
+                    </svg>
+
+                    <span
+                        class="cart-count"
+                        id="cartCount">
+
+                        0
+
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================
+         CONTENIDO
+    ========================== -->
+
+    <main>
+
+        <div class="main-container">
+
+
+            <!-- TÍTULO -->
+
+            <div class="page-title">
+
+                <h1>
+                    Catálogo de Prendas
+                </h1>
+
+                <p>
+                    Explora nuestra colección urbana disponible para entrega inmediata.
+                </p>
+
+            </div>
+
+
+
+            <!-- =========================
+                 CATÁLOGO
+            ========================== -->
+
+            <div class="catalog-layout">
+
+
+                <!-- =========================
+                     FILTROS
+                ========================== -->
+
+                <aside class="filters">
+
+
+                    <!-- CATEGORÍA -->
+
+                    <div class="filter-group">
+
+                        <h3 class="filter-title">
+                            Categoría
+                        </h3>
+
+                        <div class="category-list">
+
+
+                            <label>
+
+                                <input
+                                    type="checkbox"
+                                    value="Streetwear"
+                                    class="category-filter">
+
+                                <span>
+                                    Hoodies & Casacas
+                                </span>
+
+                            </label>
+
+
+                            <label>
+
+                                <input
+                                    type="checkbox"
+                                    value="Básicos"
+                                    class="category-filter">
+
+                                <span>
+                                    Camisetas Oversize
+                                </span>
+
+                            </label>
+
+
+                            <label>
+
+                                <input
+                                    type="checkbox"
+                                    value="Pantalones"
+                                    class="category-filter">
+
+                                <span>
+                                    Pantalones Cargo
+                                </span>
+
+                            </label>
+
+
+                            <label>
+
+                                <input
+                                    type="checkbox"
+                                    value="Abrigos"
+                                    class="category-filter">
+
+                                <span>
+                                    Abrigos
+                                </span>
+
+                            </label>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- TALLAS -->
+
+                    <div class="filter-group">
+
+                        <h3 class="filter-title">
+                            Tallas
+                        </h3>
+
+                        <div class="sizes">
+
+                            <button
+                                type="button"
+                                class="size-button selected">
+                                S
+                            </button>
+
+                            <button
+                                type="button"
+                                class="size-button">
+                                M
+                            </button>
+
+                            <button
+                                type="button"
+                                class="size-button">
+                                L
+                            </button>
+
+                            <button
+                                type="button"
+                                class="size-button">
+                                XL
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- LIMPIAR -->
+
+                    <button
+                        type="button"
+                        class="clear-button"
+                        id="clearFilters">
+
+                        Limpiar Filtros
+
+                    </button>
+
+                </aside>
+
+
+
+                <!-- =========================
+                     PRODUCTOS
+                ========================== -->
+
+                <section>
+
+                    <div
+                        class="products-grid"
+                        id="productsGrid">
+
+
+                        <!-- PRODUCTO 1 -->
+
+                        <article
+                            class="product-card"
+                            data-category="Streetwear">
+
+                            <div class="product-image">
+
+                                <span class="badge badge-new">
+                                    Nuevo
+                                </span>
+
+                                <img
+                                    src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=500&auto=format&fit=crop&q=80"
+                                    alt="Hoodie Oversize Essential">
+
+                            </div>
+
+
+                            <div class="product-info">
+
+                                <div>
+
+                                    <span class="product-category">
+                                        Streetwear
+                                    </span>
+
+                                    <h3 class="product-name">
+                                        Hoodie Oversize Essential
+                                    </h3>
+
+                                    <p class="product-price">
+                                        $49.99
+                                    </p>
+
+                                </div>
+
+
+                                <button
+                                    class="product-button add-cart"
+                                    type="button"
+                                    data-product="Hoodie Oversize Essential">
+
+                                    Agregar al carrito
+
+                                </button>
+
+                            </div>
+
+                        </article>
+
+
+
+                        <!-- PRODUCTO 2 -->
+
+                        <article
+                            class="product-card"
+                            data-category="Básicos">
+
+                            <div class="product-image">
+
+                                <span class="badge badge-discount">
+                                    -20%
+                                </span>
+
+                                <img
+                                    src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500&auto=format&fit=crop&q=80"
+                                    alt="Camiseta Heavyweight Cotton">
+
+                            </div>
+
+
+                            <div class="product-info">
+
+                                <div>
+
+                                    <span class="product-category">
+                                        Básicos
+                                    </span>
+
+                                    <h3 class="product-name">
+                                        Camiseta Heavyweight Cotton
+                                    </h3>
+
+                                    <div class="price-container">
+
+                                        <span class="product-price">
+                                            $24.99
+                                        </span>
+
+                                        <span class="old-price">
+                                            $30.00
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <button
+                                    class="product-button add-cart"
+                                    type="button"
+                                    data-product="Camiseta Heavyweight Cotton">
+
+                                    Agregar al carrito
+
+                                </button>
+
+                            </div>
+
+                        </article>
+
+
+
+                        <!-- PRODUCTO 3 -->
+
+                        <article
+                            class="product-card"
+                            data-category="Abrigos">
+
+                            <div class="product-image">
+
+                                <img
+                                    src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=500&auto=format&fit=crop&q=80"
+                                    alt="Chaqueta Térmica Utility">
+
+                            </div>
+
+
+                            <div class="product-info">
+
+                                <div>
+
+                                    <span class="product-category">
+                                        Abrigos
+                                    </span>
+
+                                    <h3 class="product-name">
+                                        Chaqueta Térmica Utility
+                                    </h3>
+
+                                    <p class="product-price">
+                                        $89.99
+                                    </p>
+
+                                </div>
+
+
+                                <button
+                                    class="product-button add-cart"
+                                    type="button"
+                                    data-product="Chaqueta Térmica Utility">
+
+                                    Agregar al carrito
+
+                                </button>
+
+                            </div>
+
+                        </article>
+
+
+
+                        <!-- PRODUCTO 4 -->
+
+                        <article
+                            class="product-card"
+                            data-category="Streetwear">
+
+                            <div class="product-image">
+
+                                <span class="badge badge-new">
+                                    Nuevo
+                                </span>
+
+                                <img
+                                    src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=500&auto=format&fit=crop&q=80"
+                                    alt="Chaqueta Street Urban">
+
+                            </div>
+
+
+                            <div class="product-info">
+
+                                <div>
+
+                                    <span class="product-category">
+                                        Streetwear
+                                    </span>
+
+                                    <h3 class="product-name">
+                                        Chaqueta Street Urban
+                                    </h3>
+
+                                    <p class="product-price">
+                                        $74.99
+                                    </p>
+
+                                </div>
+
+
+                                <button
+                                    class="product-button add-cart"
+                                    type="button"
+                                    data-product="Chaqueta Street Urban">
+
+                                    Agregar al carrito
+
+                                </button>
+
+                            </div>
+
+                        </article>
+
+
+
+                        <!-- PRODUCTO 5 -->
+
+                        <article
+                            class="product-card"
+                            data-category="Básicos">
+
+                            <div class="product-image">
+
+                                <img
+                                    src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=500&auto=format&fit=crop&q=80"
+                                    alt="Camiseta Oversize Black">
+
+                            </div>
+
+
+                            <div class="product-info">
+
+                                <div>
+
+                                    <span class="product-category">
+                                        Básicos
+                                    </span>
+
+                                    <h3 class="product-name">
+                                        Camiseta Oversize Black
+                                    </h3>
+
+                                    <p class="product-price">
+                                        $29.99
+                                    </p>
+
+                                </div>
+
+
+                                <button
+                                    class="product-button add-cart"
+                                    type="button"
+                                    data-product="Camiseta Oversize Black">
+
+                                    Agregar al carrito
+
+                                </button>
+
+                            </div>
+
+                        </article>
+
+
+
+                        <!-- PRODUCTO 6 -->
+
+                        <article
+                            class="product-card"
+                            data-category="Pantalones">
+
+                            <div class="product-image">
+
+                                <span class="badge badge-discount">
+                                    -15%
+                                </span>
+
+                                <img
+                                    src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=500&auto=format&fit=crop&q=80"
+                                    alt="Pantalón Cargo Utility">
+
+                            </div>
+
+
+                            <div class="product-info">
+
+                                <div>
+
+                                    <span class="product-category">
+                                        Pantalones
+                                    </span>
+
+                                    <h3 class="product-name">
+                                        Pantalón Cargo Utility
+                                    </h3>
+
+                                    <div class="price-container">
+
+                                        <span class="product-price">
+                                            $59.99
+                                        </span>
+
+                                        <span class="old-price">
+                                            $70.00
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <button
+                                    class="product-button add-cart"
+                                    type="button"
+                                    data-product="Pantalón Cargo Utility">
+
+                                    Agregar al carrito
+
+                                </button>
+
+                            </div>
+
+                        </article>
+
+
+
+                        <!-- SIN PRODUCTOS -->
+
+                        <div
+                            class="no-products"
+                            id="noProducts">
+
+                            <h2>
+                                No se encontraron productos
+                            </h2>
+
+                            <p>
+                                Selecciona otra categoría.
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            &copy; 2026 AURA Clothing - Todos los derechos reservados.
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        /* =========================
+           CARRITO
+        ========================== */
+
+        let carrito = 0;
+
+        const cartCount =
+            document.getElementById("cartCount");
+
+        const botonesCarrito =
+            document.querySelectorAll(".add-cart");
+
+
+        botonesCarrito.forEach(function(boton) {
+
+            boton.addEventListener("click", function() {
+
+                carrito++;
+
+                cartCount.textContent = carrito;
+
+                alert(
+                    "Producto agregado al carrito."
+                );
+
+            });
+
+        });
+
+
+
+        /* =========================
+           FILTROS
+        ========================== */
+
+        const filtros =
+            document.querySelectorAll(".category-filter");
+
+        const productos =
+            document.querySelectorAll(".product-card");
+
+        const mensaje =
+            document.getElementById("noProducts");
+
+
+        function filtrarProductos() {
+
+            let categoriasSeleccionadas = [];
+
+            filtros.forEach(function(filtro) {
+
+                if (filtro.checked) {
+
+                    categoriasSeleccionadas.push(
+                        filtro.value
+                    );
+
+                }
+
+            });
+
+
+            let encontrados = 0;
+
+
+            productos.forEach(function(producto) {
+
+                const categoria =
+                    producto.getAttribute("data-category");
+
+
+                if (
+                    categoriasSeleccionadas.length === 0 ||
+                    categoriasSeleccionadas.includes(categoria)
+                ) {
+
+                    producto.style.display = "flex";
+
+                    encontrados++;
+
+                } else {
+
+                    producto.style.display = "none";
+
+                }
+
+            });
+
+
+            if (encontrados === 0) {
+
+                mensaje.style.display = "block";
+
+            } else {
+
+                mensaje.style.display = "none";
+
+            }
+
+        }
+
+
+
+        /* =========================
+           EVENTOS FILTROS
+        ========================== */
+
+        filtros.forEach(function(filtro) {
+
+            filtro.addEventListener(
+                "change",
+                filtrarProductos
+            );
+
+        });
+
+
+
+        /* =========================
+           TALLAS
+        ========================== */
+
+        const tallas =
+            document.querySelectorAll(".size-button");
+
+
+        tallas.forEach(function(talla) {
+
+            talla.addEventListener("click", function() {
+
+                tallas.forEach(function(item) {
+
+                    item.classList.remove(
+                        "selected"
+                    );
+
+                });
+
+                talla.classList.add(
+                    "selected"
+                );
+
+            });
+
+        });
+
+
+
+        /* =========================
+           LIMPIAR FILTROS
+        ========================== */
+
+        const limpiar =
+            document.getElementById("clearFilters");
+
+
+        limpiar.addEventListener(
+            "click",
+            function() {
+
+                filtros.forEach(function(filtro) {
+
+                    filtro.checked = false;
+
+                });
+
+
+                tallas.forEach(function(talla) {
+
+                    talla.classList.remove(
+                        "selected"
+                    );
+
+                });
+
+
+                tallas[0].classList.add(
+                    "selected"
+                );
+
+
+                filtrarProductos();
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
+
